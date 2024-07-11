@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.center {
+    margin: 20px auto;
+}
+
+#login input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.status-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.status-button.red {
+    background-color: #ff4b4b;
+}
+
+.status-button.green {
+    background-color: #4caf50;
+}
+
+.status-button.red:hover {
+    background-color: #ff6b6b;
+}
+
+.status-button.green:hover {
+    background-color: #66bb6a;
+}
+
+#status_list p {
+    margin: 5px 0;
+    font-size: 18px;
+}

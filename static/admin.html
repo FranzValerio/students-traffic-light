@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Panel de Administrador</h1>
+        <div id="status_list">
+            {% for user, status in students_status.items() %}
+                <p>{{ user }}: <span style="color:{{ 'green' if status == 'green' else 'red' }};">{{ 'Estoy listo' if status == 'green' else 'Aún no estoy listo' }}</span></p>
+            {% endfor %}
+        </div>
+        <button onclick="resetStatus()">Resetear estados</button>
+    </div>
+    <script>
+        var socket = io();
+
+        function resetStatus() {
+            socket.emit('reset');
+        }
+
+        socket.on('update_status', function(data) {
+            var statusList = document.getElementById('status_list');
+            statusList.innerHTML = '';
+            for (var user in data) {
+                var color = data[user] === 'green' ? 'green' : 'red';
+                var statusText = data[user] === 'green' ? 'Estoy listo' : 'Aún no estoy listo';
+                statusList.innerHTML += '<p>' + user + ': <span style="color:' + color + ';">' + statusText + '</span></p>';
+            }
+        });
+    </script>
+</body>
+</html>

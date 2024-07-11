@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo de Clase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Semáforo de Clase</h1>
+        <div id="login" class="center">
+            <input type="text" id="username" placeholder="Ingresa tu nombre">
+            <button onclick="join()">Unirse</button>
+        </div>
+        <div id="controls" class="center" style="display:none;">
+            <button class="status-button red" onclick="changeStatus('red')">Aún no estoy listo</button>
+            <button class="status-button green" onclick="changeStatus('green')">Estoy listo</button>
+        </div>
+        <div id="status_list" class="center"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
